@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>One Direction Landing Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #121212;
+            color: #f5f5f5;
+            text-align: center;
+        }
+    
+        header {
+            background-color: #000000;
+            color: rgb(7, 233, 30);
+            padding: 8rem;
+            position: relative;
+            max-height: 1000px;
+            background: url('header-image.jpg') center/cover no-repeat fixed;
+            animation: parallax 10s linear infinite;
+        }
+    
+        @keyframes parallax {
+            0% { background-position: center 0; }
+            100% { background-position: center 50%; }
+        }
+    
+        header h1 {
+            margin: 0;
+            font-size: 3rem;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+        }
+    
+        header img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            margin-top: 1rem;
+            max-height: 1000px;
+        }
+    
+        header p {
+            font-size: 1.2rem;
+            margin-top: 1rem;
+        }
+    
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #1a1a1a;
+            padding: 0.5rem 1rem;
+            color: #f5f5f5;
+        }
+    
+        nav ul {
+            list-style: none;
+            display: flex;
+            padding: 0;
+            margin: 0;
+        }
+    
+        nav ul li {
+            margin: 0 1rem;
+        }
+    
+        nav ul li a {
+            color: #fbf7f7;
+            text-decoration: none;
+            transition: color 0.3s, text-shadow 0.3s;
+        }
+    
+        /* Glowing effect on hover for the "Songs" link */
+        nav ul li a:hover {
+            text-decoration: underline;
+            color: #1db954;
+        }
+    
+        .menu a.songs:hover {
+            color: #00FF00; /* Green text */
+            text-shadow: 0 0 10px #00FF00, 0 0 20px #00FF00, 0 0 30px #00FF00;
+        }
+    
+        .search-bar {
+            background-color: #333;
+            border: none;
+            padding: 0.5rem;
+            border-radius: 5px;
+            color: white;
+        }
+    
+        .container {
+            padding: 2rem;
+        }
+    
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: #eceaea;
+        }
+    
+        .flip-card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            justify-content: center;
+        }
+    
+        .flip-card {
+            perspective: 1000px;
+            width: 200px;
+            height: 250px;
+            transition: transform 0.6s ease-in-out;
+        }
+    
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transition: transform 0.6s;
+        }
+    
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+    
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+        }
+    
+        .flip-card-front {
+            background-color: #6c7473;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    
+        .flip-card-front img {
+            border-radius: 5px;
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            margin-bottom: 1rem;
+        }
+    
+        .flip-card-back {
+            background-color: #264653;
+            color: #f5f5f5;
+            transform: rotateY(180deg);
+            text-align: center;
+            margin-bottom: 20px;
+        }
+    
+        .flip-card-back a {
+            color: #f8f5f6;
+            text-decoration: none;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+    
+        .flip-card-back a:hover {
+            text-decoration: underline;
+            color: #1db954;
+            margin-bottom: 20px;
+        }
+    
+        footer {
+            background-color: #1a1a1a;
+            color: #f5f5f5;
+            padding: 1rem;
+            text-align: center;
+            margin-top: 2rem;
+        }
+    
+        .more-songs {
+            margin-top: 2rem;
+            font-size: 1.2rem;
+        }
+    
+        .more-songs a {
+            color: #fbf7f7;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    
+        .more-songs a:hover {
+            text-decoration: underline;
+            color: #1db954;
+        }
+    
+        .icons {
+    display: flex;
+    font-size: 3rem;
+    margin-top: 0;
+    line-height: 0;
+    align-items: flex-end;
+    display: flex;
+    gap: 1px;
+    justify-content: center;
+
+}
+
+.icons a {
+    margin-right: 75px;
+}
+
+.icons :hover {
+    transform: scale(1.5);
+            color: #1db954;
+        }
+    
+        .testimonial {
+            background-color: #333;
+            padding: 2rem;
+            margin-top: 2rem;
+            border-radius: 10px;
+        }
+    
+        .testimonial h3 {
+            font-size: 1.5rem;
+        }
+    
+        .testimonial p {
+            font-style: italic;
+        }
+    
+        @keyframes headerFade {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        .like-section {
+            margin-top: 20px;
+            color: #f5f5f5;
+            text-align: center;
+        }
+
+        .like-button {
+            background-color: #1db954;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .like-button:hover {
+            background-color: #16c85d;
+        }
+
+        .like-count {
+            font-size: 1.2rem;
+            margin-top: 10px;
+        }
+    </style>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const images = [
+                'header-image.jpg', // Make sure these images exist in the right location
+                'header2.jpg',
+                'header3.jpg',
+            ];
+            let currentIndex = 0;
+            const header = document.querySelector('header');
+
+            setInterval(() => {
+                currentIndex = (currentIndex + 1) % images.length;
+                header.style.backgroundImage = `url(${images[currentIndex]})`; // Apply image as background
+            }, 4000);  // Change image every 4 seconds
+        });
+    </script>
+    <script src="https://kit.fontawesome.com/f9c49325e6.js" crossorigin="anonymous"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            let likeCount = 0;  // Initial like count
+            const likeButton = document.querySelector('#likeButton');
+            const likeDisplay = document.querySelector('#likeCount');
+
+            likeButton.addEventListener('click', () => {
+                likeCount++;
+                likeDisplay.textContent = `Likes: ${likeCount}`;
+            });
+        });
+    </script>
+</head>
+<body>
+    <nav>
+        <h3>One Direction Fan Page</h3>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#members">Band Members</a></li>
+            <li><a href="#songs">Songs</a></li>
+            <li><a href="#help">Help</a></li>
+        </ul>
+        <input type="text" class="search-bar" placeholder="Search...">
+    </nav>
+
+    <header>
+        <h1>One Direction</h1>
+        <p>The ultimate fan page for One Direction lovers!</p>
+    </header>
+
+    <div class="container" id="members">
+        <h2 class="section-title">Band Members</h2>
+        <div class="flip-card-container">
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="harry.jpg" alt="Harry Styles">
+                        <h3>Harry Styles</h3>
+                        <p>Lead Vocalist</p>
+                    </div>
+                    <div class="flip-card-back">
+                        <p>Known for his charm and voice. Popular solo songs: "As It Was" and "Watermelon Sugar."
+                        <br>
+                        <a href="https://en.wikipedia.org/wiki/Harry_Styles" target="_blank">More about Harry Styles</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="niall.jpg" alt="Niall Horan">
+                        <h3>Niall Horan</h3>
+                        <p>Guitarist & Vocalist</p>
+                    </div>
+                    <div class="flip-card-back">
+                        <p>The heart of the group. Popular solo songs: "Slow Hands" and "This Town."
+                        <br>
+                        <a href="https://en.wikipedia.org/wiki/Niall_Horan" target="_blank">More about Niall Horan</a></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="liam.jpg" alt="Liam Payne">
+                        <h3>Liam Payne</h3>
+                        <p>Vocalist</p>
+                    </div>
+                    <div class="flip-card-back">
+                        <p>The performer. Popular solo songs: "Strip That Down" and "Stack It Up."
+                        <br>
+                        <a href="https://en.wikipedia.org/wiki/Liam_Payne" target="_blank">More about Liam Payne</a></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="louis.jpg" alt="Louis Tomlinson">
+                        <h3>Louis Tomlinson</h3>
+                        <p>Vocalist</p>
+                    </div>
+                    <div class="flip-card-back">
+                        <p>The heart of the band. Popular solo songs: "Back to You" and "Just Hold On."
+                        <br>
+                        <a href="https://en.wikipedia.org/wiki/Louis Tomlinson" target="_blank">More about Louis Tomlinson</a></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="zayn.jpg" alt="Zayn Malik">
+                        <h3>Zayn Malik</h3>
+                        <p>Vocalist</p>
+                    </div>
+                    <div class="flip-card-back">
+                        <p>Known for his unique voice. Popular solo songs: "Pillowtalk" and "Dusk Till Dawn."
+                        <br>
+                        <a href="https://en.wikipedia.org/wiki/Zayn_Malik" target="_blank">More about Zayn Malik</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" id="songs">
+        <h2 class="section-title">Top Songs</h2>
+        <div class="flip-card-container">
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="song1.jpg" alt="What Makes You Beautiful">
+                        <h3>What Makes You Beautiful</h3>
+                    </div>
+                    <div class="flip-card-back">
+                        <a href="https://open.spotify.com/track/4cluDES4hQEUhmXj6TXkSo?si=7865facd83694a21" target="_blank">Listen on Spotify</a>
+                    </div>
+                </div>
+            </div>
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="song4.jpg" alt="Night Changes">
+                        <h3>Night Changes</h3>
+                    </div>
+                    <div class="flip-card-back">
+                        <a href="https://open.spotify.com/track/5O2P9iiztwhomNh8xkR9lJ?si=1554218a59544842" target="_blank">Listen on Spotify</a>
+                    </div>
+                </div>
+            </div>
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="song2.jpg" alt="Story of My Life">
+                        <h3>Story of My Life</h3>
+                    </div>
+                    <div class="flip-card-back">
+                        <a href="https://open.spotify.com/track/4nVBt6MZDDP6tRVdQTgxJg?si=8ba8846b52814054" target="_blank">Listen on Spotify</a>
+                    </div>
+                </div>
+            </div>
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="song5.jpg" alt="One Thing">
+                        <h3>One Thing</h3>
+                    </div>
+                    <div class="flip-card-back">
+                        <a href="https://open.spotify.com/track/5G2c6FsfTzgYUzageCmfXY?si=06bb32ad6f5f49d4" target="_blank">Listen on Spotify</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="song3.jpg" alt="Drag Me Down">
+                        <h3>Drag Me Down</h3>
+                    </div>
+                    <div class="flip-card-back">
+                        <a href="https://open.spotify.com/track/2K87XMYnUMqLcX3zvtAF4G?si=bf4c6efab46f4d34" target="_blank">Listen on Spotify</a>
+                    </div>
+        </div>
+    </div>
+</div>
+    <div class="container" id="help">
+        <div class="testimonial">
+            <h3>Fan Testimonial</h3>
+            <p>"One Direction's music has always been my go-to for feeling better, and I just can't get enough of their amazing voices!"</p>
+        </div>
+    </div>
+    <div class="like-section">
+        <button id="likeButton" class="like-button">Like if you love this page!</button>
+        <div id="likeCount" class="like-count">Likes: 0</div>
+    </div>
+    <footer>
+        <p>&copy; 2024 One Direction Fan Page. All rights reserved.</p>
+        <div class="more-songs">
+            <a href="#">Explore more songs</a>
+        </div>
+        <div class="icons">
+            <ul>
+              <a style="color: #0ac623;"href="https://open.spotify.com/artist/4AK6F7OLvEQ5QYCBNiQWHq?si=I3ey7K0EST6Ox6m2kUVnkw"><i class="fa-brands fa-spotify"></i></a> 
+              <a style="color: #595b60b5;"href="#"><i class="fa-brands fa-apple"></i></a>
+              <a style="color: #ef4f0bf3;"href="#"><i class="fa-brands fa-soundcloud"></i></a>
+              <a style="color: floralwhite;"href="#"><i class="fa-brands fa-deezer"></i></a>
+            </ul>
+            </div>
+    </footer>
+</body>
+</html>
